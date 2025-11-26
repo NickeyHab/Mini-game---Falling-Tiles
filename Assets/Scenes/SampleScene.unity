@@ -2173,7 +2173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 652884371}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hexagons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4076,6 +4076,10 @@ PrefabInstance:
     - target: {fileID: 3001167624054637973, guid: 336204074aaafa94fa28c563e6cf9da4, type: 3}
       propertyPath: m_Name
       value: HexagonPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347245387034771710, guid: 336204074aaafa94fa28c563e6cf9da4, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6270,7 +6274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1425430787944959840, guid: 3b22ff5964121d04bb76774ba997041d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1425430787944959840, guid: 3b22ff5964121d04bb76774ba997041d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6307,6 +6311,14 @@ PrefabInstance:
     - target: {fileID: 3943040887667267008, guid: 3b22ff5964121d04bb76774ba997041d, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4770537118766480046, guid: 3b22ff5964121d04bb76774ba997041d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8856250222518638216, guid: 3b22ff5964121d04bb76774ba997041d, type: 3}
+      propertyPath: HexTile.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

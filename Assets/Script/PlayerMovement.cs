@@ -8,6 +8,10 @@ public class PlayerMovement : MonoBehaviour
 {
     private InputSystem_Actions controls;
     private Rigidbody _rigidbody;
+    private bool isGrounded;
+    public Transform groundCheck;
+    private float groundCheckRadius;
+    public LayerMask HexTileLayer;
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
@@ -29,6 +33,10 @@ public class PlayerMovement : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         playerCamera = Camera.main;
     }
+    private void Start()
+    {
+        groundCheckRadius = groundCheck.localScale.y;
+    }
 
     private void OnEnable()
     {
@@ -43,32 +51,35 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        moveDirection = transform.forward;
+        moveDirection = transform.forward; // forward direction of the player
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, HexTileLayer);
     }
     private void FixedUpdate()
     {
-        moveInput = controls.Player.Move.ReadValue<Vector2>();
+        moveInput = controls.Player.Move.ReadValue<Vector2>(); // Get movement input from input system
         MovePlayer();
         float currentSpeed = _rigidbody.linearVelocity.magnitude;
     }
 
     private void MovePlayer()
     {
+        // Move relative to camera orientation
         Vector3 forward = playerCamera.transform.forward;
         Vector3 right = playerCamera.transform.right;
 
+        // Make sure y is 0 for up and down and normalize vectors
         forward.y = 0;
         right.y = 0;
         forward.Normalize();
         right.Normalize();
 
-        Vector3 movement = (right * moveInput.x + forward * moveInput.y) * moveSpeed;
-        _rigidbody.MovePosition(_rigidbody.position + movement * Time.deltaTime);
+        Vector3 movement = (right * moveInput.x + forward * moveInput.y) * moveSpeed; // Calculate movement vector
+        _rigidbody.MovePosition(_rigidbody.position + movement * Time.deltaTime); // Move the rigidbody
 
         if (moveInput.magnitude > 0.001f)
         {
             moveDirection = movement.normalized;
-            transform.rotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.LookRotation(moveDirection); // Rotate player to face movement direction
         }
     }
     private void Jump()
@@ -84,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
         isJumping = true;
         Vector3 startPos = transform.position;
 
-        // Calculate the three key positions for the triangular jump
+        // Jump consists out of 3 segments. Calculate the three key positions for the triangular jump
         Vector3 peakStartPos = startPos + (moveDirection * jumpDistance / 3) + (Vector3.up * jumpHeight);
         Vector3 peakEndPos = startPos + (moveDirection * jumpDistance * 2 / 3) + (Vector3.up * jumpHeight);
         Vector3 endPos = startPos + (moveDirection * jumpDistance);

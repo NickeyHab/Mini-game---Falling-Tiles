@@ -386,6 +386,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6a212feca4895429a1ffe0bbf39972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  groundCheck: {fileID: 2984667081076061526}
+  HexTileLayer:
+    serializedVersion: 2
+    m_Bits: 64
   moveSpeed: 5
   jumpHeight: 2
   jumpDuration: 0.6
@@ -431,7 +435,8 @@ GameObject:
   - component: {fileID: 2984667081076061526}
   - component: {fileID: 832697151329727123}
   - component: {fileID: 4770537118766480046}
-  - component: {fileID: 1638880951361071524}
+  - component: {fileID: 1382024045207309772}
+  - component: {fileID: 4959682357911669670}
   m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
@@ -510,7 +515,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1638880951361071524
+--- !u!135 &1382024045207309772
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -525,12 +530,28 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4959682357911669670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4441776621120297390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb37a3189fa84d3408743a6599c0f8c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TileTouch
+  hexTileTag: HexTile
+  fallDelay: 1
+  fallSpeed: 10
+  fadeDuration: 1
 --- !u!1 &7408355578889013410
 GameObject:
   m_ObjectHideFlags: 0
