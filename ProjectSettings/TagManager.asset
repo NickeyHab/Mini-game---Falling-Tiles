@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - HexTile
+  - ResetFloor
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -40,14 +39,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        controls.Player.Enable();
-        controls.Player.Jump.performed += _ => Jump();
+        controls.Player1.Enable();
+        controls.Player1.Jump.performed += _ => Jump();
     }
 
     private void OnDisable()
     {
-        controls.Player.Disable();
-        controls.Player.Jump.performed -= _ => Jump();
+        controls.Player1.Disable();
+        controls.Player1.Jump.performed -= _ => Jump();
     }
     private void Update()
     {
@@ -56,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        moveInput = controls.Player.Move.ReadValue<Vector2>(); // Get movement input from input system
+        moveInput = controls.Player1.Move.ReadValue<Vector2>(); // Get movement input from input system
         MovePlayer();
         float currentSpeed = _rigidbody.linearVelocity.magnitude;
     }
@@ -86,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isJumping)
         {
-            controls.Player.Move.Disable();
+            controls.Player1.Move.Disable();
             StartCoroutine(jumpSequence());
         }
     }
@@ -121,6 +120,6 @@ public class PlayerMovement : MonoBehaviour
 
             transform.position = endPos;
             isJumping = false;
-            controls.Player.Move.Enable();
+            controls.Player1.Move.Enable();
         }
 }
