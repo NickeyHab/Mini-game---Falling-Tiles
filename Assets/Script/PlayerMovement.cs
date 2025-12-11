@@ -5,7 +5,9 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    private InputSystem_Actions controls;
+    [SerializeField] private int playerIndex;
+    private InputAction moveAction;
+    private InputAction jumpAction;
     private Rigidbody _rigidbody;
     private bool isGrounded;
     public Transform groundCheck;
@@ -27,9 +29,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        controls = new InputSystem_Actions();
         _rigidbody = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
+
+        string actionMapName = playerInput.playerIndex == 0 ? "Player1" : "Player2";
+        playerInput.SwitchCurrentActionMap(actionMapName);
+
+        moveAction = playerInput.actions["Move"];
+        jumpAction = playerInput.actions["Jump"];
+        
         playerCamera = Camera.main;
     }
     private void Start()
@@ -39,14 +47,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        controls.Player1.Enable();
-        controls.Player1.Jump.performed += _ => Jump();
+        moveAction.Enable();
+        jumpAction.Enable();
+        jumpAction.performed += _ => Jump();
     }
 
     private void OnDisable()
     {
-        controls.Player1.Disable();
-        controls.Player1.Jump.performed -= _ => Jump();
+        moveAction.Disable();
+        jumpAction.Disable();
+        jumpAction.performed -= _ => Jump();
     }
     private void Update()
     {
@@ -55,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        moveInput = controls.Player1.Move.ReadValue<Vector2>(); // Get movement input from input system
+        moveInput = moveAction.ReadValue<Vector2>(); // Get movement input from input system
         MovePlayer();
         float currentSpeed = _rigidbody.linearVelocity.magnitude;
     }
@@ -85,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isJumping)
         {
-            controls.Player1.Move.Disable();
+            moveAction.Disable();
             StartCoroutine(jumpSequence());
         }
     }
@@ -120,6 +130,6 @@ public class PlayerMovement : MonoBehaviour
 
             transform.position = endPos;
             isJumping = false;
-            controls.Player1.Move.Enable();
+            moveAction.Enable();
         }
 }

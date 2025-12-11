@@ -258,7 +258,7 @@ Transform:
   m_GameObject: {fileID: 3943040887667267008}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 21.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -387,6 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6a212feca4895429a1ffe0bbf39972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  playerIndex: 1
   groundCheck: {fileID: 2984667081076061526}
   HexTileLayer:
     serializedVersion: 2
@@ -420,9 +421,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player2
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultActionMap: 4e2fcdfc-d8bc-4f26-9238-f644e29c2983
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 339606559827443185}
 --- !u!114 &2205858317644614586
@@ -658,7 +659,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7408355578889013410}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &6938333176136091406
 MonoBehaviour:
   m_ObjectHideFlags: 0
