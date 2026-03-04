@@ -32,9 +32,6 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
 
-        string actionMapName = playerInput.playerIndex == 0 ? "Player1" : "Player2";
-        playerInput.SwitchCurrentActionMap(actionMapName);
-
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
         

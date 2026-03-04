@@ -3,7 +3,7 @@
     "name": "InputSystem_Actions",
     "maps": [
         {
-            "name": "Player1",
+            "name": "Player",
             "id": "df70fa95-8a34-4494-b137-73ab6b9c7d37",
             "actions": [
                 {
@@ -83,6 +83,17 @@
                 },
                 {
                     "name": "",
+                    "id": "29dd79a4-56b4-4d32-9a58-32dc2f960405",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Controller",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "eb40bb66-4559-4dfa-9a2f-820438abb426",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -91,95 +102,14 @@
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Player2",
-            "id": "4e2fcdfc-d8bc-4f26-9238-f644e29c2983",
-            "actions": [
-                {
-                    "name": "Move",
-                    "type": "Value",
-                    "id": "cc4a43ec-133d-495e-a0ba-da20c425d34d",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "bc1919b7-fb74-4534-a34c-7fefb3baef51",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "IJKL",
-                    "id": "44d904a0-d872-4fcb-820f-a39433df4d33",
-                    "path": "Dpad",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "718ac409-efd6-4322-b30a-f5da301c348e",
-                    "path": "<Keyboard>/i",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";P2 IJKL;Keyboard&Mouse",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "aae63d0e-af4e-4c9b-ade4-72d6dc9790e1",
-                    "path": "<Keyboard>/k",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";P2 IJKL;Keyboard&Mouse",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "b5ad8947-2093-45d1-a70f-81f35288acbb",
-                    "path": "<Keyboard>/j",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";P2 IJKL;Keyboard&Mouse",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "3f5d7077-0926-42bd-9e31-73db99822b36",
-                    "path": "<Keyboard>/l",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";P2 IJKL;Keyboard&Mouse",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "d30377c2-dbe7-4810-b8fa-9de408db5dbf",
-                    "path": "<Keyboard>/rightCtrl",
+                    "id": "22888076-bcbc-496a-85d4-cd41e4c1704e",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "P2 IJKL;Keyboard&Mouse",
+                    "groups": ";Controller",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -715,6 +645,17 @@
                 },
                 {
                     "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Controller",
+            "bindingGroup": "Controller",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
                     "isOptional": false,
                     "isOR": false
                 }
